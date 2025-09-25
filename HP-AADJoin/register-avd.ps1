@@ -1,4 +1,5 @@
 # Download AVD Agent and Bootloader
+
 $agentUrl = "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv"
 $bootloaderUrl = "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH"
 
@@ -14,3 +15,4 @@ $token = Get-Content "C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtensio
 Set-ItemProperty -Path $regPath -Name "RegistrationToken" -Value $token.Trim()
 
 Restart-Service RDAgentBootLoader
+
