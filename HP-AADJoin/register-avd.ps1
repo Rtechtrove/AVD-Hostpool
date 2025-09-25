@@ -10,9 +10,12 @@ Start-Process msiexec.exe -ArgumentList "/i AVDAgent.msi /quiet /norestart" -Wai
 Start-Process msiexec.exe -ArgumentList "/i AVDBootloader.msi /quiet /norestart" -Wait
 
 # Inject registration token
+$token = Get-Content ".\registrationToken.txt" | Out-String
 $regPath = "HKLM:\SOFTWARE\Microsoft\RDInfraAgent"
-$token = Get-Content "C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\*\Downloads\*\registrationToken.txt" | Out-String
 Set-ItemProperty -Path $regPath -Name "RegistrationToken" -Value $token.Trim()
 
 Restart-Service RDAgentBootLoader
+
+
+
 
